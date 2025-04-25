@@ -1,18 +1,12 @@
 package com.example.chatviewer;
 
 
-
-public class ChatMessage {
-    // Timestamp of the message (as a raw string from the file)
-    private final String timestamp;
-
-    // Nickname of the user who sent the message
-    private final String nickname;
-
-    // Actual context/text of the message
-    private final String content;
-
-
+/**
+ * @param timestamp Timestamp of the message (as a raw string from the file)
+ * @param nickname  Nickname of the user who sent the message
+ * @param content   Actual context/text of the message
+ */
+public record ChatMessage(String timestamp, String nickname, String content) {
     /**
      * Constructs new ChatMessage object via the parsed message data.
      *
