@@ -1,5 +1,7 @@
 package com.example.chatviewer;
 
+
+
 public class ChatMessage {
     // Timestamp of the message (as a raw string from the file)
     private final String timestamp;
