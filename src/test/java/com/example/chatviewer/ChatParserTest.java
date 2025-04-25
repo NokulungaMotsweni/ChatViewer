@@ -63,5 +63,26 @@ public class ChatParserTest {
         assertTrue(exception.getMessage().contains("Empty File."));
     }
 
-    
+    /**
+     * Tests that a message block with a missing field results in an InvalidMessageFormatException
+     * due to an incomplete message structure.
+     */
+
+    @Test
+    void testParseMalformedFile_missingField() {
+        List<String> lines = List.of(
+                "Time:12:34:56",
+                "Message:Hello Bob :)" // Missing "Name:" line
+        );
+
+        // Expecting an exception due to a missing field in the message block
+        Exception exception = assertThrows(
+                Exceptions.InvalidMessageFormatException.class,
+                () -> {ChatParser.parse(lines);
+                });
+
+        // Asset that the exception message indicates that there is an unexpected end of file
+        assertTrue(exception.getMessage().contains("Unexpected end of file"));
+    }
+
 }
