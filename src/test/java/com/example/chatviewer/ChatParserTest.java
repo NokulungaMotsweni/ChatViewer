@@ -85,4 +85,28 @@ public class ChatParserTest {
         assertTrue(exception.getMessage().contains("Unexpected end of file"));
     }
 
+    /**
+     * Incorrect header label ("Timestamp:" instead of "time")
+     */
+    @Test
+    void testParseMalformedFile_incorrectHeading() {
+        List<String> lines = List.of(
+                "Timestamp:12:34:56",        // Incorrect header, should be "Time:"
+                "Name:Adam",                 // Correct name
+                "Message:Hello Bob :)"       // Correct message
+        );
+
+        // Expect exception due to the incorrect header format
+        Exception exception = assertThrows(
+                Exceptions.InvalidMessageFormatException.class,
+                () -> ChatParser.parse(lines)
+        );
+
+        // Verify that exception message does indicate incorrect header
+        assertTrue(exception.getMessage().contains("Incorrect heading format"));
+    }
+// TODO:
+    // Go through ICA-Appendix and create test cases after adding exceptions from those cases
+    // Fix the missing header test cases after adding new exceptions
+    // Fix the incorrect/invalid/unrecognised header test cases
 }
