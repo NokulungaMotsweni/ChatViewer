@@ -7,17 +7,8 @@ package com.example.chatviewer;
  * @param content   Actual context/text of the message
  */
 public record ChatMessage(String timestamp, String nickname, String content) {
-    /**
-     * Constructs new ChatMessage object via the parsed message data.
-     *
-     * @param timestamp: Time when message was sent.
-     * @param nickname: Name of sender.
-     * @param content: Actual text of the message.
-     */
-    public ChatMessage(String timestamp, String nickname, String content) {
-        this.timestamp = timestamp;
-        this.nickname = nickname;
-        this.content = content;
+   
+    public ChatMessage {
     }
 
     /**
