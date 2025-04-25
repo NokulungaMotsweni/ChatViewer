@@ -24,4 +24,27 @@ public class ChatMessage {
         this.content = content;
     }
 
+    /**
+     * Gets the message timestamp.
+     * Returns: Timestamp of the message.
+     */
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    /**
+     * Gets the sender's nickname.
+     * Returns: Sender's nickname.
+     */
+    public String getNickname() {
+        return nickname;
+    }
+
+    /**
+     * Gets the content of the message.
+     * Returns: Message content.
+     */
+    public String getContent() {
+        return content;
+    }
 }
