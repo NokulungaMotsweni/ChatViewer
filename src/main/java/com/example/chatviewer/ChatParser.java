@@ -1,5 +1,12 @@
 package com.example.chatviewer;
 
+import java.util.*;
+
+/**
+ * Turns raw files into ChatMessage objects.
+ * Reads lines from the .msg file and uses regex to slice them into little message pieces.
+ * (time, name, message)
+ */
 public class ChatParser {
 
     /**
