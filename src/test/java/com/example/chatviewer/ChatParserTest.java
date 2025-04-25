@@ -4,11 +4,21 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
-
+/**
+ * Class contains the unit tests for ChatParser class from a list of strings to ChatMessage objects.
+ */
 public class ChatParserTest {
 
+    /**
+     * Tests the "happy path" where a valid file with the correct format is parsed into a list of ChatMessage
+     * objects with accurate data extraction.
+     * @throws Exceptions.InvalidMessageFormatException
+     */
     @Test
     void testParseValidFile() throws Exceptions.InvalidMessageFormatException {
+//          Valid list of chat log lines (part of - Conversation-large.msg) stiulated
+//          @author: Viktor Cerny
+
         List<String> lines = List.of(
                 "Time:12:34:56",
                 "Name:Adam",
@@ -30,19 +40,19 @@ public class ChatParserTest {
         assertEquals(3, messages.size());
 
         // Verify the fields of the first message
-        assertEquals("12:34:56", messages.get(0).getTimestamp()); // Check timestamp
-        assertEquals("Adam", messages.get(0).getNickname()); // Check the sender's name
-        assertEquals("Hello Bob", messages.get(0).getContent()); // Check the message content
+        assertEquals("12:34:56", messages.getFirst().timestamp()); // Check timestamp
+        assertEquals("Adam", messages.get(0).nickname()); // Check the sender's name
+        assertEquals("Hello Bob", messages.get(0).content()); // Check the message content
 
         // Verify the fields of the second message
-        assertEquals("12:34:59", messages.get(1).getTimestamp());
-        assertEquals("Bob", messages.get(1).getNickname());
-        assertEquals("Hi Adam", messages.get(1).getContent());
+        assertEquals("12:34:59", messages.get(1).timestamp());
+        assertEquals("Bob", messages.get(1).nickname());
+        assertEquals("Hi Adam", messages.get(1).content());
 
         // Verify the fields of the third message
-        assertEquals("12:35:01", messages.get(2).getTimestamp());
-        assertEquals("Bob", messages.get(2).getNickname());
-        assertEquals(":( I have to work on my assignment :( on PIJ", messages.get(2).getContent());
+        assertEquals("12:35:01", messages.get(2).timestamp());
+        assertEquals("Bob", messages.get(2).nickname());
+        assertEquals(":( I have to work on my assignment :( on PIJ", messages.get(2).content());
     }
 
     /**
@@ -78,8 +88,7 @@ public class ChatParserTest {
         // Expecting an exception due to a missing field in the message block
         Exception exception = assertThrows(
                 Exceptions.InvalidMessageFormatException.class,
-                () -> {ChatParser.parse(lines);
-                });
+                () -> ChatParser.parse(lines));
 
         // Asset that the exception message indicates that there is an unexpected end of file
         assertTrue(exception.getMessage().contains("Unexpected end of file"));
