@@ -44,4 +44,24 @@ public class ChatParserTest {
         assertEquals("Bob", messages.get(2).getNickname());
         assertEquals(":( I have to work on my assignment :( on PIJ", messages.get(2).getContent());
     }
+
+    /**
+     * Behaviour of parser when given empty list of lines tested.
+     */
+    @Test
+    void testParseInvalidFile() {
+
+        List<String> lines = List.of(); // Empty input list
+
+        // Exception thrown due to empty input
+        Exception exception = assertThrows(
+                Exceptions.InvalidMessageFormatException.class,
+                () -> ChatParser.parse(lines) // Try to parse the empty file
+        );
+
+        // Asset that the exception message indicates that the file is empty
+        assertTrue(exception.getMessage().contains("Empty File."));
+    }
+
+    
 }
