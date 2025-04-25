@@ -23,7 +23,11 @@ public class ChatParser {
 
         for(int i = 0; i < lines.size(); i+= 3) {
             if (i + 2 >= lines.size()) {
-                throw new Exceptions.InvalidMessageFormatException("Unexpected end of file found at line number: " + (i + 1));
+                throw new Exceptions.InvalidMessageFormatException(
+                        String.format(
+                                "Unexpected end of file: Expected three (3) lines for a message at line %d", i
+                        )
+                );
             }
 
             String timestampLine = lines.get(i).trim();

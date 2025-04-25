@@ -7,7 +7,7 @@ package com.example.chatviewer;
  * @param content   Actual context/text of the message
  */
 public record ChatMessage(String timestamp, String nickname, String content) {
-   
+
     public ChatMessage {
     }
 
@@ -15,7 +15,8 @@ public record ChatMessage(String timestamp, String nickname, String content) {
      * Gets the message timestamp.
      * Returns: Timestamp of the message.
      */
-    public String getTimestamp() {
+    @Override
+    public String timestamp() {
         return timestamp;
     }
 
@@ -23,7 +24,8 @@ public record ChatMessage(String timestamp, String nickname, String content) {
      * Gets the sender's nickname.
      * Returns: Sender's nickname.
      */
-    public String getNickname() {
+    @Override
+    public String nickname() {
         return nickname;
     }
 
@@ -31,7 +33,8 @@ public record ChatMessage(String timestamp, String nickname, String content) {
      * Gets the content of the message.
      * Returns: Message content.
      */
-    public String getContent() {
+    @Override
+    public String content() {
         return content;
     }
 }
