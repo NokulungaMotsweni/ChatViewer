@@ -16,3 +16,8 @@ public class Exceptions {
         }
     }
 }
+ // TODO:
+    // Add other exceptions.
+    // Empty file.
+    // Incorrect Header?
+    // Basically more specific and less ambiguous.
