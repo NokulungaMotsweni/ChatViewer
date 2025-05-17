@@ -5,6 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.text.TextFlow;
 
+import java.io.IOException;
+import java.util.List;
+
 /**
  * Controller class for the Chat Viewer Graphical User Interface (GUI)
  * Handles button clicks, updates labels and text displays.
