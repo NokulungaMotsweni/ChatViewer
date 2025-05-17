@@ -29,7 +29,23 @@ public class ChatViewerController {
      */
     @FXML
     protected void onOpenChatButtonClick() {
-        fileLabel.setText("Open File Logic.");
+        System.out.println("Button clicked!");
+
+        try {
+            FileHandler fileHandler = new FileHandler(openMsgFileButton.getScene().getWindow());
+            List<ChatMessage> messages = fileHandler.openAndParseFile();
+
+            // Show success feedback
+            fileLabel.setText("Chat loaded successfully.");
+
+            // Display messages in the chat window
+            ChatRenderer.render(chatTextFlow, messages);
+
+        } catch (IOException e) {
+            showErrorDialog("File Error", "Could not read the file.");
+        } catch (Exceptions.InvalidMessageFormatException e) {
+            showErrorDialog("Format Error", e.getMessage());
+        }
     }
 
     public void handleOpenFile() {
