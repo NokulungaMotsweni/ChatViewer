@@ -15,6 +15,12 @@ public class Exceptions {
             super(errorMessage);
         }
     }
+
+    public static class InvalidImageException extends Exception {
+        public InvalidImageException(String errorMessage) {
+            super(errorMessage);
+        }
+    }
 }
  // TODO:
     // Add other exceptions.
