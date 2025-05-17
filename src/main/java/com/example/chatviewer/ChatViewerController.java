@@ -51,4 +51,12 @@ public class ChatViewerController {
     public void handleOpenFile() {
         fileLabel.setText("Open File Logic."); // TODO: Still gotta figure this out
     }
+
+    private void showErrorDialog(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null); // optional: you could set a header
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
