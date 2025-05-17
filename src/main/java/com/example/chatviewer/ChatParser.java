@@ -21,7 +21,7 @@ public class ChatParser {
     public static List<ChatMessage> parse(List<String> lines) throws Exceptions.InvalidMessageFormatException {
         List<ChatMessage> messages = new ArrayList<>();
 
-        for(int i = 0; i < lines.size(); i+= 3) {
+        for(int i = 0; i < lines.size(); i+= 4) {
             if (i + 2 >= lines.size()) {
                 throw new Exceptions.InvalidMessageFormatException(
                         String.format(
