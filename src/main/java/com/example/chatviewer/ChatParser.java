@@ -44,9 +44,9 @@ public class ChatParser {
             }
 
             // Extract the values
-            String timestamp = timestampLine.replaceFirst("^Time:\\s","");
-            String nickname = nicknameLine.replaceFirst("^Name:\\s","");
-            String content = contentLine.replaceFirst("^Message:\\s","");
+            String timestamp = timestampLine.replaceFirst("^Time:", "").trim();
+            String nickname = nicknameLine.replaceFirst("^Name:", "").trim();
+            String content = contentLine.replaceFirst("^Message:", "").trim();
 
             if (timestamp.isEmpty() || nickname.isEmpty()) {
                 throw new Exceptions.InvalidMessageFormatException("Message is malformed near line " + (i + 1));
