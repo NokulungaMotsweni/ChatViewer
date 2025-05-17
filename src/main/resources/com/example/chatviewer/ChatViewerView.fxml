@@ -7,13 +7,16 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.chatviewer.ChatViewerController"
-      spacing="10" alignment="TOP_LEFT" prefWidth="600" prefHeight="400">
+      spacing="10" alignment="TOP_LEFT" prefWidth="600" prefHeight="400"
+      style="-fx-cursor: default;">
+
 
   <padding>
     <Insets top="10" right="10" bottom="10" left="10"/>
   </padding>
 
-  <Button fx:id="openMsgFileButton" text="Open Chat File" onAction="#handleOpenFile"/>
+  <Button fx:id="openMsgFileButton" text="Open Chat File" onAction="#onOpenChatButtonClick"/>
+
 
   <Label fx:id="fileLabel" text="No file selected" wrapText="true"/>
 
