@@ -35,8 +35,12 @@ public class ChatParser {
             String contentLine = lines.get(i + 2).trim();
 
             // Validate the headings
-            if (!timestampLine.startsWith("Time:") || !nicknameLine.startsWith("Name:") || !contentLine.startsWith("Message:")) {
-                throw new Exceptions.InvalidMessageFormatException("Message is malformed near line " + (i + 1));
+            if (!timestampLine.trim().startsWith("Time:") ||
+                    !nicknameLine.trim().startsWith("Name:") ||
+                    !contentLine.trim().startsWith("Message:"))  {
+                throw new Exceptions.InvalidMessageFormatException(
+                        "Message is malformed near line " + (i + 1)
+                                + ". Expected format:\nTime:\nName:\nMessage:\n(empty line)");
             }
 
             // Extract the values
